@@ -1,5 +1,0 @@
-# requirements/requirements-test.in
-
--r base.in
-
-pytest
