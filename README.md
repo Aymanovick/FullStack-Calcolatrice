@@ -36,3 +36,9 @@ uv pip install -r requirements/requirements.txt
 uv run python calcolatrice.py
 python3 calcolatrice.py
 ```
+
+## Esecuzione test
+
+``` shell
+pytest -v
+```
