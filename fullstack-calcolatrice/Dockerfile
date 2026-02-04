@@ -22,7 +22,7 @@ RUN apk add --no-cache \
 WORKDIR /app
 
 # Copy dependency manifests first for better cache usage
-COPY fullstack-calcolatrice/requirements/requirements.txt fullstack-calcolatrice/requirements/requirements-test.txt /app/requirements/
+COPY requirements/requirements.txt requirements/requirements-test.txt /app/requirements/
 
 # Build wheels (if requirements.txt exists) to speed up subsequent installs
 RUN python -m pip install --upgrade pip wheel setuptools \
@@ -49,7 +49,7 @@ WORKDIR /app
 
 # Copy prebuilt wheels from builder (if any) and install dependencies
 COPY --from=builder /wheels /wheels
-COPY fullstack-calcolatrice/requirements/requirements.txt /app/requirements/requirements.txt
+COPY requirements/requirements.txt /app/requirements/requirements.txt
 
 RUN python -m pip install --upgrade pip \
     && if [ -d /wheels ] && [ "$(ls -A /wheels 2>/dev/null)" ]; then \
